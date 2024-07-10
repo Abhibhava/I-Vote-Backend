@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const authRoute = require("./routes/authRoute");
 const electionRoute = require('./routes/createElection');
@@ -9,11 +10,13 @@ const castVote = require('./routes/castVote');
 const bodyParser = require('body-parser');
 const getElection = require("./routes/getElection");
 const cronJob = require('./tasks/cronJob');
-const MONGO_URI = "mongodb+srv://manantyagi23:evoting@cluster0.rdtjxor.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URI = process.env.MONGO_URI;
 
 // app.use('/',(req,res)=>{
 //     res.json({message: "This is our first trial"});
 // })
+
+
 
 app.use(cors());
 app.use(bodyParser.json());
